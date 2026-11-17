@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Korea Through the Ages</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f5ee;--fg:#1b2624;--mut:#5d6b68;--sea:#b9d2d2;--land:#e8eadb;--line:#c9d3cb;--card:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a1c;--fg:#e6ece8;--mut:#92a29e;--sea:#12292e;--land:#27312b;--line:#2c3d3f;--card:#172427}}
+:root[data-theme="dark"]{--bg:#0f1a1c;--fg:#e6ece8;--mut:#92a29e;--sea:#12292e;--land:#27312b;--line:#2c3d3f;--card:#172427}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;padding:10px 14px 8px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+#yr{font:600 34px/1 "Noto Serif KR","Iowan Old Style",Georgia,serif;letter-spacing:-.5px}
+#era{color:var(--mut);font-size:14px;text-align:right}
+input[type=range]{width:100%;margin:10px 0 6px;accent-color:#1f7a74;height:28px}
+#chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+#chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:14px;padding:5px 11px;font:inherit;font-size:13px}
+main{max-width:640px;margin:0 auto;padding:10px 12px 200px}
+svg{width:100%;height:auto;max-height:max(300px,calc(100svh - 240px));display:block;border-radius:14px;box-shadow:0 2px 18px rgba(0,0,0,.14)}
+#t polygon{fill-opacity:.58;stroke-width:1.3;stroke-opacity:.9;cursor:pointer}
+#t polygon.on{fill-opacity:.8;stroke-width:2.6}
+#c circle{fill:var(--fg)}
+#c text,.w{font-size:11px;fill:var(--fg);paint-order:stroke;stroke:var(--land);stroke-width:3px}
+.w{fill:var(--mut);font-style:italic;stroke:var(--sea);letter-spacing:1px}
+.r{fill:none;stroke:#5b9bb0;stroke-width:1.2;opacity:.8}
+#list{margin-top:10px;display:grid;gap:4px}
+.row{display:grid;grid-template-columns:14px 1fr;gap:4px 9px;align-items:center;padding:7px 9px;border-radius:8px;background:var(--card);border:1px solid var(--line);cursor:pointer}
+.row b{font-weight:600}.row span{color:var(--mut);font-size:13px;margin-left:6px}
+.row p{grid-column:2;margin:0;font-size:13.5px;color:var(--mut)}
+.d{width:12px;height:12px;border-radius:3px}
+.hint{color:var(--mut);font-size:13px;margin:8px 2px 0}
+.ttl{font:600 18px/1 "Noto Serif KR","Iowan Old Style",Georgia,serif}
+header .top{align-items:center}
+#deb{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:16px;padding:6px 12px;font:inherit;font-size:13px}
+#deb[aria-pressed=true]{background:#1f7a74;color:#fff;border-color:#1f7a74}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);border-radius:18px 18px 0 0}
+.dock>*{max-width:640px;margin-left:auto;margin-right:auto}
+.yb{display:flex;align-items:center;gap:12px}.yb>div{flex:1}
+#pl{border:0;background:#1f7a74;color:#fff;width:40px;height:40px;border-radius:50%;font-size:15px;flex:none}
+#t polygon{transition:fill-opacity .25s}
+#t polygon.in{animation:fi .5s ease}@keyframes fi{from{fill-opacity:0;stroke-opacity:0}}
+@media(prefers-reduced-motion:reduce){#t polygon.in{animation:none}}
+#lb text,#al text{font-size:10.5px;font-weight:600;text-anchor:middle;fill:var(--fg);paint-order:stroke;stroke:var(--land);stroke-width:3px;pointer-events:none}
+#al polygon{fill:none;stroke-width:2;stroke-dasharray:6 4;pointer-events:none}
+.ban,.ev{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:13.5px;color:var(--mut)}
+.ev:empty{display:none}.ban p,.ev p{margin:6px 0 0}.ban b,.ev b{color:var(--fg)}.ev span{font-weight:600;color:var(--fg)}
+svg{touch-action:pan-y}.cw{display:grid;gap:10px}.mw{position:relative}
+.tools{position:absolute;top:8px;right:8px;display:flex;flex-direction:column;gap:6px}
+.tools button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 90%,transparent);color:var(--fg);font:600 15px system-ui}
+.tools button[aria-pressed=true]{background:#1f7a74;color:#fff;border-color:#1f7a74}
+#cm{display:grid;gap:6px}#cm[hidden]{display:none}.cmh{display:flex;justify-content:space-between;align-items:baseline}#cm input{width:100%}
+.dt{position:fixed;left:12px;right:12px;bottom:calc(var(--dh,150px) + 10px);max-width:616px;margin:0 auto;z-index:7;padding:10px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.dt p{margin:4px 0 0;color:var(--mut);font-size:13.5px}
+#c .h{fill:transparent}#c g{cursor:pointer}
+#c .bx{fill:#c0392b;font-size:14px;font-weight:700;text-anchor:middle;stroke:var(--land);stroke-width:2px}
+.ar{fill:none;stroke:#b3261e;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;cursor:pointer}
+@media(min-width:820px){main{max-width:1160px}.cw.two{grid-template-columns:1fr 1fr}}
+</style></head><body>
+<header><div class="top"><div class="ttl">Korea through the ages</div><button id="deb" aria-pressed="false">Border debates</button></div></header>
+<main>
+<div class="cw" id="cw"><div class="mw"><svg id="map" viewBox="0 0 500 676" role="img" aria-label="Map of Korea and Manchuria">
+<defs><clipPath id="cp"><path id="lp"/></clipPath><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:#b3261e"/></marker></defs>
+<rect width="500" height="676" fill="var(--sea)"/>
+<path d="M0 104H500M0 208H500M0 312H500M0 416H500M0 520H500M0 624H500M100 0V676M220 0V676M340 0V676M460 0V676" stroke="var(--line)" stroke-width=".7" stroke-dasharray="2 5" fill="none"/>
+<path id="lf" fill="var(--land)"/>
+<g id="t" clip-path="url(#cp)"></g>
+<path id="lo" fill="none" stroke="var(--mut)" stroke-width="1.2"/>
+<g id="rv"></g>
+<text class="w" x="80" y="480">Yellow Sea</text>
+<text class="w" x="494" y="355" text-anchor="end">East Sea</text>
+<g id="lb"></g><g id="al"></g><g id="ar"></g><g id="c"></g>
+</svg><div class="tools"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="zr" aria-label="Reset view">⌖</button><button id="cmpb" aria-pressed="false" aria-label="Compare two years">A|B</button><button id="lg" aria-pressed="false" aria-label="Korean and Hanja names">한</button></div></div><div id="cm" hidden><div class="cmh"><b>Compare</b><span id="yb2"></span></div><div class="mw"><svg id="mb" viewBox="0 0 500 676" role="img" aria-label="Second year map"></svg></div><input id="sb" type="range" min="0" max="1000" step="1" aria-label="Second year"></div></div>
+<div id="dt" class="dt" hidden></div>
+<div id="ban" class="ban" hidden></div><div class="hint">Tap a territory or a name for details.</div>
+<div id="list"></div><div id="ev" class="ev"></div>
+</main>
+<div class="dock"><div class="yb"><button id="pl" aria-label="Play timeline">▶</button><div class="top"><div id="yr"></div><div id="era"></div></div></div><input id="sl" type="range" min="0" max="1000" step="1" aria-label="Year"><div id="chips"></div></div>
+<script>
+const $=i=>document.getElementById(i),X=l=>(l-119.5)*40,Y=t=>(46-t)*52;
+const pts=a=>{let s="";for(let i=0;i<a.length;i+=2)s+=X(a[i]).toFixed(1)+","+Y(a[i+1]).toFixed(1)+" ";return s};
+const S={};const s=(k,c,r,n)=>S[k]=[c,r,n];
+s("Gojoseon","#c2410c","2333 BC–194 BC","Korea’s first kingdom. Tradition dates Dangun’s founding to 2333 BC. It began around Liaodong, then shifted to Pyongyang after pressure from Yan.");
+s("Wiman Joseon","#e0592a","194–108 BC","Wiman, a refugee from Yan, took the throne in 194 BC. Han China conquered it in 108 BC.");
+s("Han commanderies","#7a7f96","108 BC–313 AD","Han set up Nangnang, Jindun, Imdun and Hyeondo. Nangnang lasted until Goguryeo took it in 313. Daebang split off around 204.");
+s("Jin","#9aae5a","c. 300–100 BC","Early southern state. Its heirs were the Samhan confederacies.");
+s("Mahan","#7fb069","to c. 369","Largest Samhan confederacy, in the southwest. Baekje grew out of one of its states and absorbed it.");
+s("Jinhan","#5fae8e","to c. 356","Southeast confederacy. Saro, one of its states, grew into Silla.");
+s("Byeonhan","#b784b5","to 42 AD","South-coast confederacy. Gimhae and neighbors became Gaya.");
+s("Gaya","#b05a9c","42–562","Loose federation of city-states (Geumgwan Gaya at Gimhae, later Daegaya). Silla absorbed it by 562.");
+s("Buyeo","#e0a526","c. 200 BC–494 AD","Songhua-plain kingdom, parent culture of Goguryeo and Baekje. Jumong left Buyeo and founded Goguryeo at Jolbon. It fell in 494.");
+s("Okjeo","#8a63c4","to c. 56 AD","East-coast tribal state in Hamgyeong, conquered by Goguryeo.");
+s("Dongye","#3fb0a4","to c. 300","Eastern coastal people, absorbed by Goguryeo and Silla.");
+s("Goguryeo","#3047d1","37 BC–668 AD","Founded by Jumong at Jolbon in 37 BC. The Gyeru clan led the five tribes (Sono, Jeolno, Sunno, Gwanno, Gyeru). It peaked under Gwanggaeto and Jangsu, and fell to Silla and Tang in 668.");
+s("Baekje","#2f9e5b","18 BC–660 AD","Founded by Onjo near Hanseong. Peak under Geunchogo (4th c.). Capital moved to Ungjin (475), then Sabi (538). Fell in 660.");
+s("Silla","#d9a521","57 BC–935 AD","Began at Saro (Gyeongju). Took the Han River in 551 and Gaya in 562, then unified most of the peninsula in 668. Weakened in the late 9th c., ended in 935.");
+s("Tang","#8f949b","618–907","Tang China. Its Andong Protectorate (668–676) ruled former Goguryeo lands until Silla pushed it out. Shown here with Liaoxi and Shandong.");
+s("Balhae","#13a3b8","698–926","Founded by Dae Joyeong, a Goguryeo-descended leader. Capital at Sanggyeong. Destroyed by the Khitan Liao in 926.");
+s("Later Baekje","#1e7a4b","900–936","Gyeon Hwon’s state in the southwest, capital Wansanju (Jeonju).");
+s("Taebong","#6a55d6","901–918","Gungye’s state, called Later Goguryeo, centered on Cheorwon.");
+s("Goryeo","#2a9fd6","918–1392","Wang Geon founded it in 918 and reunified the peninsula in 936. Gang Gam-chan’s victory at Gwiju (1019) secured the northern border.");
+s("Tamna","#cf6b8a","to 1105","Jeju’s kingdom, a tribute state until Goryeo annexed it in 1105.");
+s("Joseon","#e8742a","1392–1910","Founded by Yi Seong-gye in 1392; capital Hanyang. Sejong’s forts fixed the Yalu–Tumen border in the 1430s–40s.");
+s("Liao","#a7b0b8","926–1125","Khitan Liao destroyed Balhae and ruled Manchuria. Goryeo repelled its invasions in 993, 1010 and 1018.");
+s("Jin ","#a7b0b8","1125–1234","Jurchen Jin overthrew Liao and ruled Manchuria and north China.");
+s("Yuan","#a7b0b8","1234–1368","Mongol Yuan took Manchuria and made Goryeo a vassal after 1259.");
+s("Ming","#a7b0b8","1368–1644","Ming China held Liaodong. Joseon was its tributary.");
+s("Qing","#a7b0b8","1644–1912","Manchu Qing ruled Manchuria and made Joseon a tributary after 1637.");
+s("Yan / Qi","#a1887f","c. 400–221 BC","Warring States Yan (north) and Qi (Shandong). Yan seized Liaodong c. 300 BC, pushing Gojoseon east.");
+s("Qin–Han","#b8735f","221 BC–220 AD","Qin, then Han, ruled Hebei, Shandong and Liaodong. Han’s commanderies in Korea lay beyond.");
+s("Gongsun clan","#c9a26a","189–238","Warlords of Liaodong who set up Daebang and dealt with Goguryeo. Wei destroyed them in 238.");
+s("Cao Wei","#6f86a8","220–265","Held Shandong and Hebei, took Liaodong in 238 and attacked Goguryeo in 244.");
+s("Western Jin","#8a79b0","265–316","Briefly reunified China but lost the northeast to the Murong Xianbei.");
+s("Murong Yan","#c47f9a","285–436","Xianbei Murong states (Former, Later, Northern Yan) in Liaoxi. They fought Goguryeo over Liaodong.");
+s("Sixteen Kingdoms","#9a8f7a","316–439","Northern China split into short-lived states. Shandong changed hands often.");
+s("Northern dynasties","#7a9a9a","439–581","Northern Wei and its successors held Hebei and Shandong, and traded with Goguryeo and Baekje.");
+s("Sui","#b0a05a","581–618","Reunified China. Its invasions of Goguryeo (598–614) failed and helped bring it down.");
+s("Five Dynasties","#8d8d8d","907–960","Short-lived northern regimes after Tang, holding Shandong.");
+s("Song","#5a8fb5","960–1127","Northern Song held Shandong. Northern Hebei was under Liao.");
+const NM=[119,47,132.5,47,132.5,43.2,130.7,42.3,129.8,41.8,128.5,41,127,40.7,125.5,40.4,124.3,40,123,38.5,121,38.5,119,39.8];
+const J=[126.15,33.45,126.5,33.55,126.95,33.45,126.7,33.2,126.3,33.25];
+const SS=[129.6,35,128.9,34.8,127.7,34.7,126.2,34.3,126,35.8,125.6,37,125,37.9];
+const E=[];const e=(k,a,b,p)=>E.push([k,a,b,p]);
+e("Liao",926,1125,NM);e("Jin ",1125,1234,NM);e("Yuan",1234,1368,NM);e("Ming",1368,1644,NM);e("Qing",1644,1950,NM);
+const SW=[118,38.2,123,38.2,123,32.9,118,32.9],LX=[118,47,121.4,47,121.4,41,122.5,40.5,121.2,38.8,118,38.8],LD=[121.2,41.8,124.2,41.8,124.3,39.9,121.4,38.8];
+const cn=(k,a,b,...ps)=>ps.forEach(p=>e(k,a,b,p));
+cn("Yan / Qi",-400,-300,SW,LX);cn("Yan / Qi",-300,-221,SW,LX,LD);cn("Qin–Han",-221,189,SW,LX,LD);cn("Gongsun clan",189,238,LD);cn("Cao Wei",220,265,SW,LX);cn("Cao Wei",238,265,LD);cn("Western Jin",265,316,SW,LX,LD);cn("Murong Yan",285,436,LX,LD);cn("Sixteen Kingdoms",316,439,SW);cn("Northern dynasties",439,581,SW,LX);cn("Sui",581,618,SW,LX);cn("Tang",618,907,SW,LX);cn("Five Dynasties",907,960,SW);cn("Song",960,1127,SW);cn("Jin ",1125,1234,SW);cn("Yuan",1234,1368,SW);cn("Ming",1368,1644,SW);cn("Qing",1644,1950,SW);
+e("Gojoseon",-2333,-400,[121.8,41.8,123.5,42.6,125.5,41.8,125.2,40,124.3,39.9,123.5,39.7,121.6,38.9,121.3,40]);
+e("Gojoseon",-400,-194,[122.5,41.2,125.5,41.8,126.7,40.2,126.2,38.8,124.8,38.4,124.3,39.9,123.5,39.7]);
+e("Wiman Joseon",-194,-108,[123,41,125.5,41.5,126.7,40,126.4,38.5,125,38,124.5,39.5]);
+e("Jin",-300,-100,[125.8,38,128.4,37.5,129.4,35.5,127.4,34.4,126,34.7]);
+e("Mahan",-100,369,[126,37.2,127.4,37.2,127.7,35.5,127.4,34.7,126.2,34.3,126,35.8]);
+e("Jinhan",-100,356,[128.1,37,129.4,36.8,129.5,35.5,128.5,35.4,128.1,36]);
+e("Byeonhan",-100,42,[127.5,36,128.9,35.9,128.9,34.9,127.7,34.8]);
+e("Buyeo",-200,494,[124.2,44.8,126.5,45.8,128.5,45,128,43.3,125,43,124,43.8]);
+e("Okjeo",-100,56,[127.2,40,129,40.4,130.2,42,129.4,42.8,127.8,41.8]);
+e("Dongye",-100,300,[127.3,39.2,128.4,39.9,129.8,37.5,129,36.8,127.9,37.4,127.3,38.4]);
+e("Han commanderies",-108,313,[124.4,39.9,126.4,39.9,126.8,38.7,125.8,37.8,124.6,38.4]);
+e("Han commanderies",-107,75,[127,40.3,128.4,40.8,128.6,39.8,127.3,39.5]);
+e("Han commanderies",204,313,[125,38.4,126.5,38.4,126.7,37.6,125.2,37.5]);
+e("Silla",-57,356,[128.5,36.1,129.4,36.1,129.4,35.5,128.5,35.5]);
+e("Gaya",42,562,[127.5,36,128.9,35.9,128.9,34.9,127.7,34.8]);
+e("Goguryeo",-37,105,[124.6,42.2,126.9,42.6,127.3,41,125.5,40.4,124.6,41]);
+e("Goguryeo",105,313,[123.5,42.8,127.8,42.9,129.5,42.2,128.5,40.5,126.7,40.4,125.2,40.2,123.8,40.7]);
+e("Goguryeo",313,391,[121.2,41.2,121.8,43,124.5,43.8,128,43.6,130.2,42.6,129.6,40.7,128.2,39.8,127.2,39.3,126.4,38.6,125,38.4,124.3,39,124.3,39.9,123.5,39.7,121.8,39.3]);
+e("Goguryeo",391,551,[121,41,121.2,43.5,124.2,45.2,128.6,44.8,130.6,43.2,130.2,41.8,129.8,37.6,128,37,127.2,37,126.3,37.4,125.4,37.7,124.5,38.5,124.3,39.9,123.3,39.5,121.7,38.9]);
+e("Goguryeo",551,668,[121,41,121.2,43.5,124.2,45,128.6,44.6,130.4,43,129.7,41.5,129,39.6,127.7,38.9,127.3,38.2,126.4,37.9,125.1,38,124.3,39.5,123,39.3,121.7,38.9]);
+e("Baekje",-18,250,[126.4,38,127.4,38,127.9,37.2,127.3,36.7,126.4,36.8]);
+e("Baekje",250,475,[125,38.4,127.2,38.6,128.2,37.2,127.8,35.8,127.6,34.8,126.2,34.3,126.1,35.8,126.2,37]);
+e("Baekje",475,660,[126.1,36.9,127.7,36.9,127.8,35.4,127.4,34.7,126.2,34.3,126.1,35.8]);
+e("Silla",356,551,[128,37.4,129.5,37.2,129.5,35,128.4,35.4,128,36]);
+e("Silla",551,668,[126.8,37.6,127.8,38,129.4,38.6,129.5,35,128.9,34.8,127.7,34.8,127.6,35.9,127.6,36.9]);
+e("Silla",668,892,[125.2,39,127.5,39.6,129.6,39]. concat(SS));
+e("Silla",892,935,[128.3,37.6,129.5,37.5,129.5,35,128.9,34.8,128,35.1,127.9,36.3]);
+e("Tang",668,698,[121,42.5,124,43.5,126.6,41.6,126.8,40.3,126.6,39.2,125,38.5,124.3,39.9,121.6,39]);
+e("Balhae",698,750,[124.5,42,126,44.5,130,44.6,130.5,42.5,128.3,41.5,126.5,40.8]);
+e("Balhae",750,926,[122,42,123.5,44.5,126,45.8,130,46,132,45,132,43,130.7,42.4,129.8,41.5,128.5,40.5,127.3,39.8,126.4,40.3,125,40.6,124.5,41.5]);
+e("Later Baekje",900,936,[126,37,127.8,36.9,128.1,35.7,127.8,34.8,127,34.5,126.2,34.3,126,35.8]);
+e("Taebong",901,918,[126.2,39.2,127.5,39.8,128.8,39,129.4,38.2,128.4,37.6,127.4,37.4,126.2,37.9]);
+e("Goryeo",918,936,[125.5,38.9,127.5,39.5,129,38.8,128.4,37.8,127.4,37.5,126.2,37.9]);
+e("Goryeo",936,993,[125.2,39.2,127.5,39.8,129.6,39].concat(SS));
+e("Goryeo",993,1392,[124.3,39.9,126,40.5,127.7,40.6,129.7,40.6].concat(SS));
+e("Tamna",-300,1105,J);e("Goryeo",1105,1392,J);
+e("Joseon",1392,1433,[124.3,39.9,125.8,40.6,127.7,40.9,129.7,41.4].concat(SS));
+e("Joseon",1433,1950,[124.3,39.9,125.6,40.8,126.6,41.4,127.8,41.9,128.5,42.1,129.5,42.5,130.7,42.4,130.9,41.6].concat(SS));
+e("Joseon",1392,1950,J);
+const Cs=[["Asadal (traditional)",123.5,41.5,-2333,-400],["Wanggeomseong",125.75,39,-400,-108],["Buyeo",125.5,43.8,-200,494],["Jolbon",125.4,41.3,-37,3],["Gungnae / Hwando",126.2,41.1,3,427],["Pyongyang",125.75,39,427,668],["Wiryeseong / Hanseong",127.1,37.5,-18,475],["Ungjin",127.1,36.45,475,538],["Sabi",126.9,36.28,538,660],["Gyeongju",129.2,35.85,-57,935],["Gimhae",128.88,35.23,42,532],["Sanggyeong",129.2,44,698,926],["Cheorwon",127.2,38.15,901,918],["Wansanju",127.15,35.82,900,936],["Gaegyeong",126.55,37.97,918,1392],["Hanyang",126.98,37.57,1392,1950]];
+const RV=[[128.1,42,127,41.4,126,40.8,125,40.4,124.4,39.95],[128.1,42,129,42.45,129.9,42.95,130.5,42.6,130.65,42.3],[126.6,39.7,126,39.3,125.7,39,125.3,38.7],[128,37.4,127.5,37.5,127,37.55,126.6,37.7]];
+const L=[119,47,132.5,47,132.5,43.2,131,42.6,130.65,42.3,129.9,41.8,129.3,40.7,128.2,40.1,127.5,39.8,127.4,39.2,128.3,38.7,128.6,38.2,128.9,37.7,129.3,37.2,129.4,36,129.45,35.5,129.1,35.1,128.6,34.9,127.7,34.7,127.3,34.5,126.5,34.3,126.3,34.8,126.5,35.7,126.6,36,126.2,36.7,126.6,37.2,126.5,37.6,125.7,37.7,125.1,38,125.3,38.7,125,39.1,124.4,39.9,124.4,40.1,123.5,39.7,122.5,39.5,121.6,38.9,121.2,39.4,121.9,40.4,121.2,40.8,120.2,40.2,119.2,39.8];
+const L2=[118.5,37.3,119.7,37.2,120.3,37.7,120.8,37.85,121.4,37.55,122.1,37.5,122.6,37.4,122.3,36.9,121.2,36.7,120.3,36.05,119.5,35.4,119.3,34.7,120.2,34.2,120.9,33.3,120.9,32.9,118.5,32.9];
+const lp="M"+pts(L)+"ZM"+pts(L2)+"Z";
+$("lp").setAttribute("d",lp);$("lf").setAttribute("d",lp);$("lo").setAttribute("d",lp);
+const jl=pts(J);
+$("rv").innerHTML=RV.map(r=>`<polyline class="r" points="${pts(r)}"/>`).join("");
+const A=[[0,-2333],[120,-300],[250,0],[480,600],[650,1000],[820,1392],[1000,1900]];
+const it=(v,a,b)=>{for(let i=1;i<A.length;i++){const p=A[i-1],q=A[i];if(v<=q[a]||i==A.length-1)return p[b]+(q[b]-p[b])*(v-p[a])/(q[a]-p[a])}};
+const ER=[[-2333,"Gojoseon"],[-108,"Han commanderies · Samhan"],[-57,"Rise of the Three Kingdoms"],[313,"Three Kingdoms"],[668,"Unified Silla · Balhae"],[892,"Later Three Kingdoms"],[936,"Goryeo"],[1392,"Joseon"]];
+const CH=[["Gojoseon",-1000],["Wiman",-150],["Samhan",-30],["Early kingdoms",200],["Three Kingdoms",450],["Unified Silla",750],["Later 3",920],["Goryeo",1200],["Joseon",1500]];
+let sel=null,yr=450,deb=false;
+const LB=new Map([[SW,[119.8,36.4]],[LD,[122.8,40.6]]]),els=new Map(),NS="http://www.w3.org/2000/svg";
+const AL=[["Gojoseon",-2333,-194,[119.8,42.2,123.5,43,125.8,41.8,125.2,40,121.6,38.9,119.8,40.2],"Liao River view.","Many scholars, in China and Korea, place early Gojoseon on the Liao River, centered on Liaoning."],["Gojoseon",-2333,-108,[124.3,39.9,126.8,40,126.6,38.4,125,38],"Pyongyang view.","North Korean scholarship centers it on Pyongyang from the start."],["Han commanderies",-108,313,[121.4,41.6,123.8,41.4,123.8,39.8,121.6,39.3],"Nangnang in Liaodong.","A minority theory puts Nangnang near the Liao River. Most scholars, citing tombs and tablets near Pyongyang, place it on the Taedong."],["Goguryeo",391,551,[126.3,37.4,127.2,37,128,37,129.8,37.6,129.6,36.5,128.3,36.4,127.2,36.5],"Southern reach.","How far Goguryeo held south of the Han River in the 5th century is argued, partly from the Chungju Stele."],["Balhae",750,926,[125,39.9,127.4,39.2,128.2,39,128.6,39.8,126.5,40.3],"Southern border.","Korean historians often draw it near the Taedong–Wonsan line. Some maps stop further north, around Hamhung."],["Silla",668,892,[125.2,38,127,38.3,129.5,38.6].concat(SS),"Northern border.","Tang recognized Silla’s land south of the Taedong only in 735. Its earlier line is argued, with some maps nearer the Imjin."],["Goryeo",1100,1130,[127,40.3,128.7,41,129,40,127.7,39.8],"Nine Fortresses.","Yun Gwan’s forts (1107–09) were handed back to the Jurchens. Their sites are disputed, from the Hamhung plain to the Tumen."],["Buyeo",-200,494,[122.8,43.8,124.8,45.6,126.5,46,125.5,43.8],"Heartland.","Most scholars place Buyeo on the Songhua plain near Jilin. Others look further west toward Nong’an. Its western and northern limits are poorly documented."],["Goguryeo",-37,105,[124.2,42.4,125.8,42.4,125.8,41,124.2,41],"Jolbon site.","Jolbon is usually put near Huanren on the Hun River, but its exact site and Goguryeo’s earliest borders are argued."]];
+const EV=[[-2333,"Dangun founds Gojoseon (traditional date)."],[-194,"Wiman seizes Gojoseon’s throne."],[-108,"Han conquers Wiman Joseon and sets up commanderies."],[-57,"Silla founded at Saro (traditional)."],[-37,"Jumong founds Goguryeo at Jolbon."],[-18,"Onjo founds Baekje (traditional)."],[42,"Gaya founded at Gimhae (traditional)."],[313,"Goguryeo takes Nangnang."],[391,"Gwanggaeto takes the Goguryeo throne."],[475,"Goguryeo takes Hanseong; Baekje moves to Ungjin."],[612,"Goguryeo defeats Sui at Salsu."],[660,"Baekje falls to Silla and Tang."],[668,"Goguryeo falls."],[698,"Dae Joyeong founds Balhae."],[918,"Wang Geon founds Goryeo."],[936,"Goryeo reunifies the peninsula."],[1019,"Gang Gam-chan wins at Gwiju."],[1231,"Mongol invasions begin."],[1392,"Yi Seong-gye founds Joseon."],[1443,"Hangul created under Sejong."],[1592,"Japan invades Joseon (Imjin War)."],[1636,"Qing invades Joseon."]];
+function sync(act){const g=$("t");for(const [x,el] of els)if(!act.includes(x)){el.remove();els.delete(x)}
+for(const x of act){let el=els.get(x);if(!el){const c=S[x[0]][0];el=document.createElementNS(NS,"polygon");el.setAttribute("points",pts(x[3]));el.setAttribute("fill",c);el.setAttribute("stroke",c);el.dataset.k=x[0];el.classList.add("in");const nx=act.slice(act.indexOf(x)+1).map(y=>els.get(y)).find(Boolean);g.insertBefore(el,nx||null);els.set(x,el)}el.classList.toggle("on",x[0]==sel)}}
+function extras(act){const lb=[];
+for(const x of act){const p=x[3],n=p.length/2;let a=1e9,b=-1e9,c=1e9,d=-1e9,sx=0,sy=0;for(let i=0;i<p.length;i+=2){a=Math.min(a,p[i]);b=Math.max(b,p[i]);c=Math.min(c,p[i+1]);d=Math.max(d,p[i+1]);sx+=p[i];sy+=p[i+1]}
+if((b-a)*(d-c)>2.4){const l=LB.get(p)||[sx/n,sy/n];lb.push(`<text x="${X(l[0])}" y="${Y(l[1])}">${nm(x[0])}</text>`)}}
+$("lb").innerHTML=lb.join("");$("ar").innerHTML=arr(yr);
+const al=deb?AL.filter(a=>a[1]<=yr&&yr<a[2]):[];
+$("al").innerHTML=al.map(a=>`<polygon points="${pts(a[3])}" stroke="${S[a[0]][0]}"/>`).join("");
+$("ban").hidden=!deb;
+$("ban").innerHTML=deb?"<b>Border debates on.</b> Borders here are hand-drawn and simplified, and historians disagree on many of them, especially for Gojoseon and the Samhan. Dashed outlines show other scholarly views."+(al.length?"":"<p>No major competing views are mapped for this year.</p>")+al.map(a=>`<p><b style="color:${S[a[0]][0]}">▨ ${a[4]}</b> ${a[5]}</p>`).join(""):"";
+const ev=EV.filter(v=>Math.abs(v[0]-yr)<=Math.max(40,Math.abs(yr)*.06)).slice(0,4);
+$("ev").innerHTML=ev.length?"<b>Around this time</b>"+ev.map(v=>`<p><span>${fy(v[0])}</span> ${v[1]}</p>`).join(""):""}
+$("deb").onclick=()=>{deb=!deb;$("deb").setAttribute("aria-pressed",deb);draw()};
+let ko=false,vb=[0,0,500,676],cmp=false,yb=750,moved=false,pd=0,sx0=0,sy0=0;const pp=new Map();
+const KO={"Gojoseon":"고조선 古朝鮮","Wiman Joseon":"위만조선 衛滿朝鮮","Han commanderies":"한사군 漢四郡","Jin":"진국 辰國","Mahan":"마한 馬韓","Jinhan":"진한 辰韓","Byeonhan":"변한 弁韓","Gaya":"가야 伽倆","Buyeo":"부여 扶餘","Okjeo":"옥저 沃沮","Dongye":"동예 東濋","Goguryeo":"고구려 高句麗","Baekje":"백제 百濟","Silla":"신라 新羅","Balhae":"발해 渤海","Later Baekje":"후백제 後百濟","Taebong":"태봉 泰封","Goryeo":"고려 高麗","Tamna":"탐라 耽羅","Joseon":"조선 朝鮮","Yan / Qi":"연·제 燕·齊","Qin–Han":"진·한 秦·漢","Gongsun clan":"공손씨 公孫氏","Cao Wei":"조위 曹魏","Western Jin":"서진 西晉","Murong Yan":"모용연 慕容燕","Sixteen Kingdoms":"십육국 十六國","Northern dynasties":"북조 北朝","Sui":"수 隧","Tang":"당 唐","Five Dynasties":"오대 五代","Song":"송 宋","Liao":"요 遼","Jin ":"금 金","Yuan":"원 元","Ming":"명 明","Qing":"청 淑",
+"Han commanderies · Samhan":"한사군·삼한 漢四郡·三韓","Rise of the Three Kingdoms":"삼국 성립기 三國成立期","Three Kingdoms":"삼국시대 三國時代","Unified Silla · Balhae":"남북국시대 南北國時代","Later Three Kingdoms":"후삼국 後三國",
+"Asadal (traditional)":"아사달 阿斯達","Wanggeomseong":"왕검성 王儉城","Jolbon":"졸본 卒本","Gungnae / Hwando":"국내성 國內城 / 환도성 丸都城","Pyongyang":"평양 平壤","Wiryeseong / Hanseong":"위례성 慰禮城 / 한성 漢城","Ungjin":"웅진 熊津","Sabi":"사비 泗沎","Gyeongju":"경주 慶州","Gimhae":"김해 金海","Sanggyeong":"상경 上京","Cheorwon":"철원 鐵原","Wansanju":"완산주 完山州","Gaegyeong":"개경 開京","Hanyang":"한양 漢陽"};
+const nm=k=>ko&&KO[k]?KO[k]:k.trim();
+const CN={"Asadal (traditional)":"Traditional capital of Gojoseon. Its site is unknown and debated (Liaoning or Pyongyang).","Wanggeomseong":"Gojoseon’s capital near Pyongyang under Wiman. Han took it in 108 BC.","Buyeo":"Royal center of Buyeo on the Songhua plain.","Jolbon":"Where Jumong founded Goguryeo in 37 BC. Usually placed near Huanren on the Hun River.","Gungnae / Hwando":"Goguryeo’s capital from the 1st century AD, at Ji’an on the Yalu, guarded by the Hwando fortress.","Pyongyang":"Goguryeo moved its capital here in 427. Nangnang commandery also stood in this area.","Wiryeseong / Hanseong":"Baekje’s first capital on the Han River, until Goguryeo took it in 475.","Ungjin":"Baekje’s capital from 475 to 538 (now Gongju).","Sabi":"Baekje’s last capital, 538–660 (now Buyeo County).","Gyeongju":"Silla’s capital for almost a thousand years.","Gimhae":"Seat of Geumgwan Gaya and a major trade port.","Sanggyeong":"Balhae’s main capital, near Ningan in Heilongjiang.","Cheorwon":"Capital of Gungye’s Taebong.","Wansanju":"Now Jeonju, capital of Later Baekje.","Gaegyeong":"Goryeo’s capital, now Kaesong.","Hanyang":"Joseon’s capital, now Seoul."};
+const BT=[["Ansi Fortress",122.7,40.9,645,"Goguryeo held off Tang Taizong’s army for months."],["Salsu",125.3,39.6,612,"Eulji Mundeok destroyed a Sui army at the Cheongcheon River."],["Hwangsanbeol",127.2,36.1,660,"Gyebaek’s Baekje force fell to Silla’s Kim Yu-sin."],["Baekgang",126.6,36,663,"Silla–Tang fleets crushed a Baekje–Yamato force."],["Gwiju",125.2,39.9,1019,"Gang Gam-chan destroyed a Khitan army, ending the wars."],["Hansando",128.5,34.8,1592,"Yi Sun-sin’s fleet beat the Japanese navy."]];
+const AR=[["Jumong’s flight",-45,-34,[125.5,43.8,125.4,41.3],"Tradition says Jumong left Buyeo and founded Goguryeo at Jolbon in 37 BC."],["Onjo heads south",-24,-12,[125.4,41.3,126.2,39.2,127.1,37.5],"Tradition says Onjo, a Goguryeo prince, led followers south and founded Baekje."],["Han invasion",-110,-107,[121.4,40.5,123.5,40.2,125.75,39],"Han armies attacked Wanggeomseong in 109–108 BC."],["Gwanggaeto north",391,413,[126.2,41.1,125.5,43.6],"Campaigns against Buyeo and nearby tribes."],["Gwanggaeto south",391,413,[126.2,41.1,125.8,39,126.5,38],"Campaigns against Baekje, taking dozens of fortresses (396)."],["Sui invasion",598,614,[122,40.8,123.3,41.2,125.3,39.6],"Sui launched huge invasions of Goguryeo in 598, 612, 613 and 614."],["Tang fleet, 660",655,661,[121.5,37.4,124.5,36.9,126.9,36.3],"Tang sailed from Shandong to join Silla against Baekje."],["Silla army, 660",655,661,[129.2,35.85,128,36.2,127.2,36.1],"Kim Yu-sin marched Silla’s army toward Baekje."],["Mongol invasions",1231,1259,[125,40.4,125.8,39,126.55,37.97],"Six Mongol invasions. The Goryeo court held out on Ganghwa Island."],["Imjin War",1592,1598,[129.1,35.1,128.3,36,127,37.5,125.75,39],"Japan pushed north to Pyongyang before Ming and Joseon forces and the navy turned it back."]];
+const cit=y=>Cs.map((c,i)=>c[3]<=y&&y<c[4]?`<g data-i="c${i}"><circle cx="${X(c[1])}" cy="${Y(c[2])}" r="3.2"/><circle class="h" cx="${X(c[1])}" cy="${Y(c[2])}" r="11"/><text x="${X(c[1])+5}" y="${Y(c[2])+3}">${nm(c[0])}</text></g>`:"").join("")+BT.map((b,i)=>Math.abs(b[3]-y)<=12?`<g data-i="b${i}"><text class="bx" x="${X(b[1])}" y="${Y(b[2])+5}">✕</text><circle class="h" cx="${X(b[1])}" cy="${Y(b[2])}" r="11"/></g>`:"").join("");
+const arr=y=>AR.map((a,i)=>a[1]<=y&&y<=a[2]?`<polyline data-i="a${i}" class="ar" points="${pts(a[3])}" marker-end="url(#ah)"/>`:"").join("");
+document.addEventListener("click",ev=>{const n=ev.target.closest("[data-i]"),d=$("dt");if(!n){d.hidden=true;return}const i=+n.dataset.i.slice(1),t=n.dataset.i[0],r=t=="c"?[nm(Cs[i][0]),CN[Cs[i][0]]]:t=="b"?[BT[i][0]+" ("+fy(BT[i][3])+")",BT[i][4]]:[AR[i][0],AR[i][4]];d.innerHTML=`<b>${r[0]}</b><p>${r[1]}</p>`;d.hidden=false});
+const sv=$("map"),mb=$("mb");mb.innerHTML=sv.innerHTML;
+const setVB=()=>{const s=vb.join(" "),z=vb[2]<499?"none":"pan-y";for(const el of[sv,mb]){el.setAttribute("viewBox",s);el.style.touchAction=z}};
+const toS=(el,px,py)=>{const r=el.getBoundingClientRect(),k=Math.min(r.width/vb[2],r.height/vb[3]);return[vb[0]+(px-r.left-(r.width-vb[2]*k)/2)/k,vb[1]+(py-r.top-(r.height-vb[3]*k)/2)/k,k]};
+const zoom=(f,cx,cy)=>{const w=Math.min(500,Math.max(70,vb[2]*f)),h=w*676/500;cx=cx??vb[0]+vb[2]/2;cy=cy??vb[1]+vb[3]/2;vb=[Math.max(0,Math.min(500-w,cx-(cx-vb[0])*w/vb[2])),Math.max(0,Math.min(676-h,cy-(cy-vb[1])*h/vb[3])),w,h];setVB()};
+function bind(el){el.addEventListener("pointerdown",e=>{pp.set(e.pointerId,[e.clientX,e.clientY]);moved=false;pd=0;sx0=e.clientX;sy0=e.clientY});
+el.addEventListener("pointermove",e=>{const o=pp.get(e.pointerId);if(!o)return;pp.set(e.pointerId,[e.clientX,e.clientY]);if(Math.hypot(e.clientX-sx0,e.clientY-sy0)>7)moved=true;
+if(pp.size==2){const[a,b]=[...pp.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd){const c=toS(el,(a[0]+b[0])/2,(a[1]+b[1])/2);zoom(pd/d,c[0],c[1])}pd=d}
+else if(vb[2]<499){const k=toS(el,0,0)[2];vb[0]=Math.max(0,Math.min(500-vb[2],vb[0]-(e.clientX-o[0])/k));vb[1]=Math.max(0,Math.min(676-vb[3],vb[1]-(e.clientY-o[1])/k));setVB()}});
+const up=e=>{pp.delete(e.pointerId);pd=0};for(const t of["pointerup","pointercancel","pointerleave"])el.addEventListener(t,up);
+el.addEventListener("wheel",e=>{if(!e.ctrlKey&&!e.metaKey&&vb[2]>=499)return;e.preventDefault();const c=toS(el,e.clientX,e.clientY);zoom(e.deltaY>0?1.15:.87,c[0],c[1])},{passive:false});
+el.addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true)}
+bind(sv);bind(mb);
+$("zi").onclick=()=>zoom(.7);$("zo").onclick=()=>zoom(1.4);$("zr").onclick=()=>{vb=[0,0,500,676];setVB()};
+const bq=s=>mb.querySelector(s),erOf=y=>ER.filter(r=>y>=r[0]).pop()[1];
+const labs=act=>act.map(x=>{const p=x[3],n=p.length/2;let a=1e9,b=-1e9,c=1e9,d=-1e9,sx=0,sy=0;for(let i=0;i<p.length;i+=2){a=Math.min(a,p[i]);b=Math.max(b,p[i]);c=Math.min(c,p[i+1]);d=Math.max(d,p[i+1]);sx+=p[i];sy+=p[i+1]}const l=LB.get(p)||[sx/n,sy/n];return(b-a)*(d-c)>2.4?`<text x="${X(l[0])}" y="${Y(l[1])}">${nm(x[0])}</text>`:""}).join("");
+function renderB(){const y=yb,act=E.filter(x=>x[1]<=y&&y<x[2]);bq("#t").innerHTML=act.map(x=>`<polygon fill="${S[x[0]][0]}" stroke="${S[x[0]][0]}" points="${pts(x[3])}"/>`).join("");bq("#lb").innerHTML=labs(act);bq("#c").innerHTML=cit(y);bq("#ar").innerHTML=arr(y);$("yb2").textContent=fy(y)+" · "+nm(erOf(y))}
+$("sb").oninput=e=>{yb=Math.round(it(+e.target.value,0,1));renderB()};
+$("cmpb").onclick=()=>{cmp=!cmp;$("cm").hidden=!cmp;$("cw").classList.toggle("two",cmp);$("cmpb").setAttribute("aria-pressed",cmp);if(cmp){$("sb").value=it(yb,1,0);renderB();$("cm").scrollIntoView({behavior:"smooth",block:"nearest"})}};
+$("lg").onclick=()=>{ko=!ko;$("lg").textContent=ko?"EN":"한";$("lg").setAttribute("aria-pressed",ko);$("deb").textContent=ko?"국경 논쟁":"Border debates";document.querySelector(".ttl").textContent=ko?"한국의 시대별 지도":"Korea through the ages";draw();if(cmp)renderB()};
+const sdh=()=>document.documentElement.style.setProperty("--dh",document.querySelector(".dock").offsetHeight+"px");sdh();addEventListener("resize",sdh);
+let tm=null;$("pl").onclick=()=>{if(tm){clearInterval(tm);tm=null;$("pl").textContent="▶";return}$("pl").textContent="❚❚";if(+$("sl").value>=1000)$("sl").value=0;tm=setInterval(()=>{const v=+$("sl").value+2;if(v>1000){$("pl").click();return}$("sl").value=v;yr=Math.round(it(v,0,1));draw()},90)};
+const fy=y=>y<0?-y+" BC":y+" AD";
+function draw(){
+const act=E.filter(x=>x[1]<=yr&&yr<x[2]);
+sync(act);
+$("c").innerHTML=cit(yr);
+const ks=[...new Set(act.map(x=>x[0]))];
+$("list").innerHTML=ks.map(k=>`<div class="row" data-k="${k}"><i class="d" style="background:${S[k][0]}"></i><div><b>${nm(k)}</b><span>${S[k][1]}</span></div>${k==sel?`<p>${S[k][2]}</p>`:""}</div>`).join("");
+$("yr").textContent=fy(yr);
+let en="";for(const r of ER)if(yr>=r[0])en=r[1];$("era").textContent=nm(en);extras(act);
+}
+document.addEventListener("click",ev=>{const n=ev.target.closest("[data-k]");if(n){sel=sel==n.dataset.k?null:n.dataset.k;draw()}});
+$("sl").addEventListener("input",ev=>{yr=Math.round(it(+ev.target.value,0,1));draw()});
+$("chips").innerHTML=CH.map(c=>`<button data-y="${c[1]}">${c[0]}</button>`).join("");
+$("chips").addEventListener("click",ev=>{const b=ev.target.closest("button");if(!b)return;yr=+b.dataset.y;$("sl").value=it(yr,1,0);draw()});
+$("sl").value=it(yr,1,0);draw();
+</script></body></html>
